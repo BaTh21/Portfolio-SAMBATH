@@ -15,7 +15,7 @@ const projectsData = [
       "Truematch360: Developed a full-stack matching platform designed to connect users, managing complex data relationships using PostgreSQL.",
       "Mobile App: Developed a mobile application alongside the web platforms, handling both frontend user interfaces (React/MUI) and API integrations."
     ],
-    tech: ['React.js', 'MUI', 'FastAPI','PostgreSQL', 'AI Chatbot'],
+    tech: ['React.js', 'MUI', 'FastAPI','PostgreSQL','Python', 'Docker', 'JWT', 'OAuth2', 'WebSockets'],
     link: 'https://gitea.skl-solutions.com/', 
     isPrivate: true,
     platform: 'Gitea',

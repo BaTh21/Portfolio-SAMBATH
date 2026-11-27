@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, useTheme, Fab, Zoom } from '@mui/material';
+import { Box, useTheme, Fab, Zoom, Tooltip } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { AppThemeProvider } from './context/ThemeContext';
 import { ParticlesProvider } from '@tsparticles/react'; 
@@ -28,7 +28,6 @@ const AppContent = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button when user scrolls down 400px
       if (window.scrollY > 400) {
         setShowButton(true);
       } else {
@@ -58,13 +57,15 @@ const AppContent = () => {
           ? 'linear-gradient(-45deg, #E2E8F0, #F4F7F6, #EBF4FF, #E2E8F0)' 
           : 'linear-gradient(-45deg, #0F172A, #1E1B4B, #0F172A, #111827)', 
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        overflowX: 'hidden', // Prevents horizontal scrolling on all devices
+        width: '100%',
       }}
     >
       <ParticleBackground />
       <Navbar />
       
-      <Box component="main" sx={{ position: 'relative', zIndex: 1 }}>
+      <Box component="main" sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
         <Hero />
         <Skills />
         <Certifications />
@@ -74,27 +75,33 @@ const AppContent = () => {
         <Contact />
       </Box>
 
-      {/* FLOATING SCROLL TO TOP BUTTON */}
+      {/* RESPONSIVE FLOATING SCROLL TO TOP BUTTON */}
       <Zoom in={showButton}>
-        <Fab 
-          color="primary" 
-          size="medium" 
-          aria-label="scroll back to top"
-          onClick={scrollToTop}
-          sx={{
-            position: 'fixed',
-            bottom: { xs: 20, sm: 30 },
-            right: { xs: 20, sm: 30 },
-            zIndex: 1000,
-            color: isLight ? 'white' : '#121212',
-            boxShadow: 4,
-            '&:hover': {
-              backgroundColor: 'secondary.main'
-            }
-          }}
-        >
-          <KeyboardArrowUpIcon />
-        </Fab>
+        <Tooltip title="Back to Top" placement="left" arrow>
+          <Fab 
+            color="primary" 
+            size="medium" 
+            aria-label="scroll back to top"
+            onClick={scrollToTop}
+            sx={{
+              position: 'fixed',
+              // Responsive positioning
+              bottom: { xs: 20, sm: 30, md: 40 },
+              right: { xs: 20, sm: 30, md: 40 },
+              zIndex: 1000,
+              color: isLight ? 'white' : '#121212',
+              boxShadow: 4,
+              // Responsive button size
+              width: { xs: 48, sm: 56, md: 64 },
+              height: { xs: 48, sm: 56, md: 64 },
+              '&:hover': {
+                backgroundColor: 'secondary.main'
+              }
+            }}
+          >
+            <KeyboardArrowUpIcon sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
+          </Fab>
+        </Tooltip>
       </Zoom>
 
     </Box>

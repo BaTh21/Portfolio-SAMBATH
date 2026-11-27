@@ -10,7 +10,7 @@ const Contact = () => {
   const theme = useTheme();
 
   return (
-    <Box id="contact" sx={{ py: 10, backgroundColor: 'background.paper' }}>
+    <Box id="contact" sx={{ py: 10, backgroundColor: 'transparent' }}> {/* <--- Changed to transparent */}
       <Container maxWidth="md">
         <Typography variant="h3" align="center" color="primary" gutterBottom>
           Get In Touch

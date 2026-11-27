@@ -14,28 +14,33 @@ const skillsData = [
 
 const Skills = () => {
   return (
-    <Box id="skills" sx={{ py: 10, backgroundColor: 'background.paper' }}>
+    <Box id="skills" sx={{ py: 10, backgroundColor: 'transparent' }}>
       <Container maxWidth="lg">
-        <Typography variant="h3" align="center" color="primary">
+        <Typography variant="h3" align="center" color="primary" gutterBottom>
           Technical Skills
         </Typography>
+        
         <Grid container spacing={3} sx={{ mt: 2 }}>
           {skillsData.map((skill, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card sx={{ 
                 height: '100%', 
                 textAlign: 'center', 
-                boxShadow: 3, 
+                boxShadow: 3,
                 borderRadius: 3,
-                transition: '0.3s',
-                '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 }
+                backgroundColor: 'background.paper',
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': { 
+                  transform: 'translateY(-8px)',
+                  boxShadow: 6 
+                }
               }}>
                 <CardContent sx={{ p: 4 }}>
                   {skill.icon}
                   <Typography variant="h6" fontWeight="bold" color="text.primary" gutterBottom>
                     {skill.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                     {skill.items}
                   </Typography>
                 </CardContent>

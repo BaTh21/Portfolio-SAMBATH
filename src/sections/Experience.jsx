@@ -4,6 +4,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import LanguageIcon from '@mui/icons-material/Language';
 import BusinessIcon from '@mui/icons-material/Business';
 import LockIcon from '@mui/icons-material/Lock';
+import StorageIcon from '@mui/icons-material/Storage';
 
 const experienceData = [
   {
@@ -18,27 +19,30 @@ const experienceData = [
         subtitle: 'Social & Health Platform',
         desc: 'Engineered a comprehensive platform featuring a diary feed, short-form video reels, and real-time messaging. Implemented secure encrypted medical records and a Role-Based Access Control (RBAC) system.',
         tech: ['React.js', 'FastAPI', 'PostgreSQL', 'WebSockets'],
-        link: 'https://neco.skl-solutions.com'
+        link: 'https://neco.skl-solutions.com',
+        giteaLink: null 
       },
       {
         title: 'ChatBot',
         subtitle: 'AI Conversational Assistant',
         desc: 'Built and integrated an AI-powered conversational chatbot. Utilized Python (FastAPI) to handle backend AI logic, API requests, and prompt engineering.',
         tech: ['Python', 'FastAPI', 'AI Integration', 'React.js'],
-        link: 'https://chatbot.skl-solutions.com'
+        link: 'https://chatbot.skl-solutions.com',
+        giteaLink: null 
       },
       {
         title: 'Truematch360',
-        subtitle: 'Matching Platform',
-        desc: 'Developed a full-stack matching platform designed to connect users. Managed complex data relationships and optimized database queries.',
-        tech: ['Python','FastAPI', 'PostgreSQL', 'React.js', 'MUI', 'WebSockets'],
-        link: null
+        subtitle: 'Job Application Project', 
+        desc: 'Developed a full-stack matching platform designed to connect users. Managed complex data relationships and optimized database queries. Built to demonstrate full-stack capabilities for a job application.',
+        tech: ['Python', 'FastAPI', 'PostgreSQL', 'React.js', 'MUI', 'WebSockets'],
+        link: null,
+        giteaLink: null 
       }
     ]
   },
   {
     company: 'GoTrade',
-    companyLink: null, // No public link for GoTrade
+    companyLink: null, 
     role: 'Web Developer Intern',
     duration: 'Mar 2025 – Jun 2025',
     description: 'Built a responsive company website during my internship. Collaborated with the team to deliver a functional web presence.',
@@ -48,7 +52,8 @@ const experienceData = [
         subtitle: 'Company Web Presence',
         desc: 'Developed the frontend and backend of the company website using PHP and Laravel, ensuring a seamless user experience.',
         tech: ['PHP', 'Laravel', 'Bootstrap', 'MySQL'],
-        link: null
+        link: null,
+        giteaLink: null 
       }
     ]
   }
@@ -56,16 +61,15 @@ const experienceData = [
 
 const Experience = () => {
   const theme = useTheme();
-  // Dynamic text color for headers based on dark/light mode
   const headerTextColor = theme.palette.mode === 'light' ? 'white' : '#121212';
 
   return (
-    <Box id="experience" sx={{ py: 10, backgroundColor: 'background.default' }}>
+    <Box id="experience" sx={{ py: 10, backgroundColor: 'transparent' }}> {/* <--- Changed to transparent */}
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <WorkIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
           <Typography variant="h3" color="primary" fontWeight="bold" gutterBottom>
-            Work Experience
+            Work Experience & Projects
           </Typography>
           <Typography variant="h6" color="text.secondary">
             My professional journey and the impactful products I've built.
@@ -76,7 +80,6 @@ const Experience = () => {
           {experienceData.map((exp, index) => (
             <Card key={index} sx={{ boxShadow: 4, borderRadius: 4, overflow: 'hidden' }}>
               
-              {/* Company Header */}
               <Box sx={{ 
                 backgroundColor: 'primary.main', 
                 color: headerTextColor, 
@@ -96,7 +99,6 @@ const Experience = () => {
                   </Typography>
                 </Box>
 
-                {/* Company Website Link Button */}
                 {exp.companyLink && (
                   <Button 
                     variant="outlined" 
@@ -122,7 +124,6 @@ const Experience = () => {
 
                 <Divider sx={{ mb: 4 }} />
 
-                {/* Projects Built Here */}
                 <Typography variant="h6" fontWeight="bold" color="secondary" gutterBottom sx={{ mb: 3 }}>
                   Key Projects Delivered:
                 </Typography>
@@ -151,33 +152,50 @@ const Experience = () => {
                           ))}
                         </Stack>
 
-                        {/* Show Live Link if exists */}
-                        {proj.link ? (
-                          <Button 
-                            variant="contained" 
-                            color="success" 
-                            size="small"
-                            startIcon={<LanguageIcon />}
-                            href={proj.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{ color: 'white', fontWeight: 'bold' }}
-                          >
-                            Live Demo
-                          </Button>
-                        ) : (
-                          /* Show Private Badge if no link (e.g., GoTrade / Truematch) */
-                          <Button
-                            variant="outlined"
-                            color="inherit"
-                            size="small"
-                            startIcon={<LockIcon />}
-                            disabled
-                            sx={{ color: 'text.secondary', borderColor: 'divider' }}
-                          >
-                            Private Project
-                          </Button>
-                        )}
+                        <Stack direction="row" spacing={1}>
+                          {proj.link && (
+                            <Button 
+                              variant="contained" 
+                              color="success" 
+                              size="small"
+                              startIcon={<LanguageIcon />}
+                              href={proj.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              sx={{ color: 'white', fontWeight: 'bold' }}
+                            >
+                              Live Demo
+                            </Button>
+                          )}
+
+                          {proj.giteaLink && (
+                            <Button 
+                              variant="contained" 
+                              color="primary" 
+                              size="small"
+                              startIcon={<StorageIcon />}
+                              href={proj.giteaLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              sx={{ fontWeight: 'bold', color: headerTextColor }}
+                            >
+                              View on Gitea
+                            </Button>
+                          )}
+
+                          {!proj.link && !proj.giteaLink && (
+                            <Button
+                              variant="outlined"
+                              color="inherit"
+                              size="small"
+                              startIcon={<LockIcon />}
+                              disabled
+                              sx={{ color: 'text.secondary', borderColor: 'divider' }}
+                            >
+                              Private Project
+                            </Button>
+                          )}
+                        </Stack>
                       </Box>
                     </Box>
                   ))}

@@ -13,7 +13,7 @@ const Hero = () => {
                 minHeight: '85vh',
                 display: 'flex',
                 alignItems: 'center',
-                backgroundColor: 'background.default',
+                backgroundColor: 'transparent', // <--- Changed to transparent
                 pt: { xs: 8, md: 0 }
             }}
         >
@@ -21,7 +21,7 @@ const Hero = () => {
                 <Grid container spacing={4} alignItems="center">
 
                     <Grid item xs={12} md={7} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-                        <Typography variant="h5" color="secondary.main" fontWeight="bold" gutterBottom>
+                        <Typography variant="h5" color="secondary" fontWeight="bold" gutterBottom>
                             Hello, I am
                         </Typography>
 
@@ -38,8 +38,8 @@ const Hero = () => {
                         </Typography>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                            <Button variant="contained" color="primary" size="large" href="#projects" sx={{ px: 4, py: 1.5, borderRadius: 2, fontWeight: 'bold', color: theme.palette.mode === 'light' ? 'white' : '#121212' }}>
-                                View Projects
+                            <Button variant="contained" color="primary" size="large" href="#experience" sx={{ px: 4, py: 1.5, borderRadius: 2, fontWeight: 'bold', color: theme.palette.mode === 'light' ? 'white' : '#121212' }}>
+                                View Experience
                             </Button>
                             <Button variant="outlined" color="primary" size="large" href="#contact" sx={{ px: 4, py: 1.5, borderRadius: 2, fontWeight: 'bold' }}>
                                 Contact Me
@@ -68,7 +68,7 @@ const Hero = () => {
                             sx={{
                                 width: { xs: 250, md: 350 },
                                 height: { xs: 250, md: 350 },
-                                border: `8px solid ${theme.palette.background.paper}`, // Adapts to dark/light mode
+                                border: `8px solid ${theme.palette.background.paper}`, 
                                 boxShadow: 6,
                                 zIndex: 1
                             }}

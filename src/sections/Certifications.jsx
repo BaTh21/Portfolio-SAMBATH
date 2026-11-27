@@ -24,38 +24,54 @@ const Certifications = () => {
   const iconColor = theme.palette.mode === 'light' ? 'white' : '#121212';
 
   return (
-    <Box id="certifications" sx={{ py: 10, backgroundColor: 'transparent' }}>
+    <Box id="certifications" sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'transparent' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <WorkspacePremiumIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-          <Typography variant="h3" color="primary" fontWeight="bold" gutterBottom>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+          <WorkspacePremiumIcon color="primary" sx={{ fontSize: { xs: 40, md: 50 }, mb: 2 }} />
+          <Typography
+            variant="h3"
+            color="primary"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' } }}
+          >
             Training & Certifications
           </Typography>
         </Box>
 
-        <Stack spacing={4} sx={{ maxWidth: '800px', mx: 'auto' }}>
+        <Stack spacing={{ xs: 3, md: 4 }} sx={{ maxWidth: '800px', mx: 'auto' }}>
           {certificationsData.map((cert, index) => (
             <Card key={index} sx={{ boxShadow: 3, borderRadius: 3 }}>
-              <CardContent sx={{ p: 3, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 3, alignItems: { sm: 'center' } }}>
-                
-                <Box sx={{ 
-                  backgroundColor: 'secondary.main', 
-                  color: iconColor,
-                  p: 2, 
-                  borderRadius: 2,
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  minWidth: '70px'
-                }}>
+              <CardContent
+                sx={{
+                  p: { xs: 2, md: 3 },
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  gap: { xs: 2, sm: 3 },
+                  alignItems: { sm: 'center' },
+                }}
+              >
+                <Box
+                  sx={{
+                    backgroundColor: 'secondary.main',
+                    color: iconColor,
+                    p: 2,
+                    borderRadius: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minWidth: { xs: '100%', sm: '70px' },
+                    minHeight: { xs: 60, sm: 'auto' },
+                  }}
+                >
                   <WorkspacePremiumIcon sx={{ fontSize: 35 }} />
                 </Box>
 
-                <Box sx={{ flexGrow: 1 }}>
-                  <Typography variant="h5" fontWeight="bold" color="primary">
+                <Box sx={{ flexGrow: 1, width: '100%' }}>
+                  <Typography variant="h5" fontWeight="bold" color="primary" sx={{ fontSize: { xs: '1.15rem', md: '1.5rem' } }}>
                     {cert.title}
                   </Typography>
-                  <Typography variant="subtitle1" color="text.primary" fontWeight="bold">
+                  <Typography variant="subtitle1" color="text.primary" fontWeight="bold" sx={{ fontSize: { xs: '0.9rem', md: '1rem' } }}>
                     {cert.institution}
                   </Typography>
                   <Typography variant="body2" color="secondary" fontWeight="bold" gutterBottom>
@@ -70,7 +86,6 @@ const Certifications = () => {
                     ))}
                   </Stack>
                 </Box>
-
               </CardContent>
             </Card>
           ))}

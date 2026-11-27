@@ -20,20 +20,18 @@ export const AppThemeProvider = ({ children }) => {
       createTheme({
         palette: {
           mode,
-          primary: { 
-            main: mode === 'light' ? '#1A365D' : '#63B3ED' // Navy Blue vs Sky Blue
+          primary: {
+            main: mode === 'light' ? '#1A365D' : '#63B3ED',
           },
-          secondary: { 
-            main: mode === 'light' ? '#2B6CB0' : '#90CDF4' 
+          secondary: {
+            main: mode === 'light' ? '#2B6CB0' : '#90CDF4',
           },
           ...(mode === 'light'
             ? {
-                // LIGHT MODE: Soft cool-grey background, pure white cards
                 background: { default: '#F4F7F6', paper: '#FFFFFF' },
                 text: { primary: '#1A202C', secondary: '#4A5568' },
               }
             : {
-                // DARK MODE: Deep charcoal background, slightly lighter charcoal cards
                 background: { default: '#121212', paper: '#1E1E1E' },
                 text: { primary: '#F7FAFC', secondary: '#A0AEC0' },
               }),
@@ -45,7 +43,7 @@ export const AppThemeProvider = ({ children }) => {
           h3: { fontWeight: 700, marginBottom: '2rem' },
         },
         shape: {
-          borderRadius: 12, // Makes all cards and buttons slightly rounded and modern
+          borderRadius: 12,
         },
       }),
     [mode]

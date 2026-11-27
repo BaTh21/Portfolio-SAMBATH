@@ -11,56 +11,65 @@ const combinedData = [
   {
     title: 'Communication',
     icon: <GroupsIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Strong interpersonal and team collaboration skills.'
+    desc: 'Strong interpersonal and team collaboration skills.',
   },
   {
     title: 'Problem Solving',
     icon: <PsychologyIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Creative and critical thinking approach to debugging and architecture.'
+    desc: 'Creative and critical thinking approach to debugging and architecture.',
   },
   {
     title: 'Adaptability',
     icon: <AutoAwesomeIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Fast learner, flexible, and open to adopting new technologies.'
+    desc: 'Fast learner, flexible, and open to adopting new technologies.',
   },
   {
     title: 'Tech Research',
     icon: <ComputerIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Passionate about researching new web development trends.'
+    desc: 'Passionate about researching new web development trends.',
   },
   {
     title: 'AI & Innovation',
     icon: <SmartToyIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Exploring AI tools to improve development efficiency.'
+    desc: 'Exploring AI tools to improve development efficiency.',
   },
   {
     title: 'Continuous Learning',
     icon: <LightbulbIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
-    desc: 'Always looking for new ways to improve technical skills.'
-  }
+    desc: 'Always looking for new ways to improve technical skills.',
+  },
 ];
 
 const SoftSkills = () => {
   return (
-    <Box id="soft-skills" sx={{ py: 10, backgroundColor: 'transparent' }}>
+    <Box id="soft-skills" sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'transparent' }}>
       <Container maxWidth="lg">
-        <Typography variant="h3" align="center" color="primary" fontWeight="bold" gutterBottom>
+        <Typography
+          variant="h3"
+          align="center"
+          color="primary"
+          fontWeight="bold"
+          gutterBottom
+          sx={{ fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' } }}
+        >
           Soft Skills & Hobbies
         </Typography>
-        
-        <Grid container spacing={3} sx={{ mt: 2, justifyContent: 'center' }}>
+
+        <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mt: 2, justifyContent: 'center' }}>
           {combinedData.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card sx={{ 
-                height: '100%', 
-                textAlign: 'center', 
-                boxShadow: 3,
-                borderRadius: 3,
-                backgroundColor: 'background.paper',
-                transition: 'all 0.3s ease-in-out',
-                '&:hover': { transform: 'translateY(-8px)', boxShadow: 6 }
-              }}>
-                <CardContent sx={{ p: 4 }}>
+              <Card
+                sx={{
+                  height: '100%',
+                  textAlign: 'center',
+                  boxShadow: 3,
+                  borderRadius: 3,
+                  backgroundColor: 'background.paper',
+                  transition: 'all 0.3s ease-in-out',
+                  '&:hover': { transform: 'translateY(-8px)', boxShadow: 6 },
+                }}
+              >
+                <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                   {item.icon}
                   <Typography variant="h6" fontWeight="bold" color="text.primary" gutterBottom>
                     {item.title}

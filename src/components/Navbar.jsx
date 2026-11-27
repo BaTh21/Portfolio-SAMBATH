@@ -11,12 +11,12 @@ const Navbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  const isDark = theme.palette.mode === 'dark';
 
-  // UPDATED LINKS
   const navItems = [
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' }, 
+    { label: 'Education', href: '#education' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -28,7 +28,11 @@ const Navbar = () => {
       <List>
         {navItems.map((item) => (
           <ListItem button key={item.label} component="a" href={item.href}>
-            <ListItemText primary={item.label} sx={{ textAlign: 'center' }} />
+            {/* Text color switches based on Dark/Light mode */}
+            <ListItemText 
+              primary={item.label} 
+              sx={{ textAlign: 'center', color: 'text.primary' }} 
+            />
           </ListItem>
         ))}
       </List>
@@ -37,11 +41,22 @@ const Navbar = () => {
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: 'background.paper', boxShadow: 1 }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: 'primary.main' }}>
+      <Toolbar sx={{ px: { xs: 1.5, sm: 3 } }}>
+        <Typography
+          variant="h6"
+          sx={{
+            flexGrow: 1,
+            fontWeight: 'bold',
+            color: 'primary.main',
+            fontSize: { xs: '0.9rem', sm: '1.25rem' },
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
           MOK KOLSAMBATH
         </Typography>
-        
+
         {/* Desktop Menu */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
           {navItems.map((item) => (
@@ -49,24 +64,48 @@ const Navbar = () => {
               {item.label}
             </Button>
           ))}
-          
+
           <IconButton sx={{ ml: 2 }} onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === 'dark' ? <Brightness7Icon sx={{ color: 'white' }} /> : <Brightness4Icon sx={{ color: 'primary.main' }} />}
+            {isDark
+              ? <Brightness7Icon sx={{ color: 'white' }} />
+              : <Brightness4Icon sx={{ color: 'primary.main' }} />}
           </IconButton>
         </Box>
 
         {/* Mobile Menu Icon */}
         <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center' }}>
-          <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === 'dark' ? <Brightness7Icon sx={{ color: 'white' }} /> : <Brightness4Icon sx={{ color: 'primary.main' }} />}
+          <IconButton sx={{ mr: 0.5 }} onClick={colorMode.toggleColorMode} color="inherit" size="small">
+            {isDark
+              ? <Brightness7Icon sx={{ color: 'white' }} />
+              : <Brightness4Icon sx={{ color: 'primary.main' }} />}
           </IconButton>
-          <IconButton color="primary" edge="start" onClick={handleDrawerToggle}>
+          
+          {/* DYNAMIC HAMBURGER COLOR */}
+          <IconButton 
+            edge="end" 
+            onClick={handleDrawerToggle} 
+            size="small"
+            sx={{ 
+              color: isDark ? 'white' : 'primary.main' 
+            }}
+          >
             <MenuIcon />
           </IconButton>
         </Box>
       </Toolbar>
 
-      <Drawer variant="temporary" open={mobileOpen} onClose={handleDrawerToggle} ModalProps={{ keepMounted: true }}>
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        PaperProps={{
+          sx: {
+            backgroundColor: 'background.paper', // Matches card background in both modes
+            color: 'text.primary' // Ensures drawer text is white in dark mode, dark in light mode
+          }
+        }}
+      >
         {drawer}
       </Drawer>
     </AppBar>

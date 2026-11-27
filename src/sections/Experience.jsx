@@ -20,7 +20,7 @@ const experienceData = [
         desc: 'Engineered a comprehensive platform featuring a diary feed, short-form video reels, and real-time messaging. Implemented secure encrypted medical records and a Role-Based Access Control (RBAC) system.',
         tech: ['React.js', 'FastAPI', 'PostgreSQL', 'WebSockets'],
         link: 'https://neco.skl-solutions.com',
-        giteaLink: null 
+        giteaLink: null,
       },
       {
         title: 'ChatBot',
@@ -28,21 +28,21 @@ const experienceData = [
         desc: 'Built and integrated an AI-powered conversational chatbot. Utilized Python (FastAPI) to handle backend AI logic, API requests, and prompt engineering.',
         tech: ['Python', 'FastAPI', 'AI Integration', 'React.js'],
         link: 'https://chatbot.skl-solutions.com',
-        giteaLink: null 
+        giteaLink: null,
       },
       {
         title: 'Truematch360',
-        subtitle: 'Job Application Project', 
+        subtitle: 'Job Application Project',
         desc: 'Developed a full-stack matching platform designed to connect users. Managed complex data relationships and optimized database queries. Built to demonstrate full-stack capabilities for a job application.',
         tech: ['Python', 'FastAPI', 'PostgreSQL', 'React.js', 'MUI', 'WebSockets'],
         link: null,
-        giteaLink: null 
-      }
-    ]
+        giteaLink: null,
+      },
+    ],
   },
   {
     company: 'GoTrade',
-    companyLink: null, 
+    companyLink: null,
     role: 'Web Developer Intern',
     duration: 'Mar 2025 – Jun 2025',
     description: 'Built a responsive company website during my internship. Collaborated with the team to deliver a functional web presence.',
@@ -53,10 +53,10 @@ const experienceData = [
         desc: 'Developed the frontend and backend of the company website using PHP and Laravel, ensuring a seamless user experience.',
         tech: ['PHP', 'Laravel', 'Bootstrap', 'MySQL'],
         link: null,
-        giteaLink: null 
-      }
-    ]
-  }
+        giteaLink: null,
+      },
+    ],
+  },
 ];
 
 const Experience = () => {
@@ -64,52 +64,74 @@ const Experience = () => {
   const headerTextColor = theme.palette.mode === 'light' ? 'white' : '#121212';
 
   return (
-    <Box id="experience" sx={{ py: 10, backgroundColor: 'transparent' }}> {/* <--- Changed to transparent */}
+    <Box id="experience" sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'transparent', overflowX: 'hidden' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <WorkIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-          <Typography variant="h3" color="primary" fontWeight="bold" gutterBottom>
+        <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 8 } }}>
+          <WorkIcon color="primary" sx={{ fontSize: { xs: 40, md: 50 }, mb: 2 }} />
+          <Typography
+            variant="h3"
+            color="primary"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ fontSize: { xs: '1.6rem', sm: '2.25rem', md: '3rem' } }}
+          >
             Work Experience & Projects
           </Typography>
-          <Typography variant="h6" color="text.secondary">
+          <Typography variant="h6" color="text.secondary" sx={{ fontSize: { xs: '0.95rem', md: '1.25rem' } }}>
             My professional journey and the impactful products I've built.
           </Typography>
         </Box>
 
-        <Stack spacing={6}>
+        <Stack spacing={{ xs: 3, md: 6 }}>
           {experienceData.map((exp, index) => (
-            <Card key={index} sx={{ boxShadow: 4, borderRadius: 4, overflow: 'hidden' }}>
-              
-              <Box sx={{ 
-                backgroundColor: 'primary.main', 
-                color: headerTextColor, 
-                p: 3, 
-                display: 'flex', 
-                justifyContent: 'space-between', 
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: 2
-              }}>
-                <Box>
-                  <Typography variant="h4" fontWeight="bold">
+            <Card 
+              key={index} 
+              sx={{ 
+                boxShadow: 4, 
+                borderRadius: { xs: 2, md: 4 }, 
+                overflow: 'hidden',
+                width: '100%', 
+                maxWidth: '100%' 
+              }}
+            >
+              {/* Header Area */}
+              <Box
+                sx={{
+                  backgroundColor: 'primary.main',
+                  color: headerTextColor,
+                  p: { xs: 2, sm: 3 },
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  justifyContent: 'space-between',
+                  alignItems: { xs: 'flex-start', sm: 'center' },
+                  gap: 2,
+                  width: '100%',
+                  boxSizing: 'border-box',
+                }}
+              >
+                <Box sx={{ wordBreak: 'break-word', width: '100%', pr: { sm: 2 } }}>
+                  <Typography variant="h4" fontWeight="bold" sx={{ fontSize: { xs: '1.25rem', md: '2rem' } }}>
                     {exp.company}
                   </Typography>
-                  <Typography variant="h6" sx={{ opacity: 0.9 }}>
+                  <Typography variant="h6" sx={{ opacity: 0.9, fontSize: { xs: '0.9rem', md: '1.25rem' } }}>
                     {exp.role} | {exp.duration}
                   </Typography>
                 </Box>
 
                 {exp.companyLink && (
-                  <Button 
-                    variant="outlined" 
+                  <Button
+                    variant="outlined"
                     startIcon={<BusinessIcon />}
                     href={exp.companyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{ 
-                      color: headerTextColor, 
+                    size="small"
+                    sx={{
+                      color: headerTextColor,
                       borderColor: headerTextColor,
-                      '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }
+                      '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' },
+                      flexShrink: 0,
+                      width: { xs: '100%', sm: 'auto' }, // Full width on mobile, auto on desktop
                     }}
                   >
                     Visit Company
@@ -117,46 +139,76 @@ const Experience = () => {
                 )}
               </Box>
 
-              <CardContent sx={{ p: { xs: 3, md: 5 } }}>
-                <Typography variant="body1" color="text.primary" sx={{ mb: 4, fontSize: '1.1rem' }}>
+              <CardContent sx={{ p: { xs: 2, md: 5 }, width: '100%', boxSizing: 'border-box' }}>
+                <Typography variant="body1" color="text.primary" sx={{ mb: { xs: 3, md: 4 }, fontSize: { xs: '0.95rem', md: '1.1rem' }, wordBreak: 'break-word' }}>
                   {exp.description}
                 </Typography>
 
-                <Divider sx={{ mb: 4 }} />
+                <Divider sx={{ mb: { xs: 3, md: 4 } }} />
 
-                <Typography variant="h6" fontWeight="bold" color="secondary" gutterBottom sx={{ mb: 3 }}>
+                <Typography variant="h6" fontWeight="bold" color="secondary" gutterBottom sx={{ mb: 3, fontSize: { xs: '1rem', md: '1.25rem' } }}>
                   Key Projects Delivered:
                 </Typography>
 
-                <Stack spacing={4}>
+                <Stack spacing={{ xs: 2.5, md: 4 }}>
                   {exp.projects.map((proj, pIndex) => (
-                    <Box key={pIndex} sx={{ 
-                      backgroundColor: 'background.paper', 
-                      p: 3, 
-                      borderRadius: 2, 
-                      border: '1px solid', 
-                      borderColor: 'divider' 
-                    }}>
-                      <Typography variant="h5" color="primary" fontWeight="bold">
-                        {proj.title} <Typography component="span" variant="subtitle1" color="text.secondary" fontWeight="normal">- {proj.subtitle}</Typography>
-                      </Typography>
-                      
-                      <Typography variant="body2" color="text.secondary" sx={{ my: 2, lineHeight: 1.7 }}>
+                    <Box
+                      key={pIndex}
+                      sx={{
+                        backgroundColor: 'background.paper',
+                        p: { xs: 2, md: 3 },
+                        borderRadius: 2,
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {/* FIXED NESTED TYPOGRAPHY */}
+                      <Box sx={{ mb: 1 }}>
+                        <Typography variant="h5" color="primary" fontWeight="bold" sx={{ fontSize: { xs: '1.1rem', md: '1.5rem' }, display: 'inline' }}>
+                          {proj.title}
+                        </Typography>
+                        <Typography component="span" variant="subtitle1" color="text.secondary" fontWeight="normal" sx={{ fontSize: { xs: '0.85rem', md: '1rem' }, display: 'inline' }}>
+                          {" "}- {proj.subtitle}
+                        </Typography>
+                      </Box>
+
+                      <Typography variant="body2" color="text.secondary" sx={{ my: 2, lineHeight: 1.7, wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                         {proj.desc}
                       </Typography>
 
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 2 }}>
-                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                      <Box 
+                        sx={{ 
+                          display: 'flex', 
+                          flexDirection: { xs: 'column', sm: 'row' }, 
+                          justifyContent: 'space-between', 
+                          alignItems: { xs: 'flex-start', sm: 'flex-end' }, 
+                          flexWrap: 'wrap', 
+                          gap: 2,
+                          mt: 2
+                        }}
+                      >
+                        {/* FIXED CHIP OVERFLOW */}
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, width: '100%' }}>
                           {proj.tech.map((tech, i) => (
-                            <Chip key={i} label={tech} size="small" color="primary" variant="outlined" sx={{ fontWeight: 'bold' }} />
+                            <Chip 
+                              key={i} 
+                              label={tech} 
+                              size="small" 
+                              color="primary" 
+                              variant="outlined" 
+                              sx={{ fontWeight: 'bold', maxWidth: '100%' }} 
+                            />
                           ))}
-                        </Stack>
+                        </Box>
 
-                        <Stack direction="row" spacing={1}>
+                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ width: { xs: '100%', sm: 'auto' } }}>
                           {proj.link && (
-                            <Button 
-                              variant="contained" 
-                              color="success" 
+                            <Button
+                              variant="contained"
+                              color="success"
                               size="small"
                               startIcon={<LanguageIcon />}
                               href={proj.link}
@@ -169,9 +221,9 @@ const Experience = () => {
                           )}
 
                           {proj.giteaLink && (
-                            <Button 
-                              variant="contained" 
-                              color="primary" 
+                            <Button
+                              variant="contained"
+                              color="primary"
                               size="small"
                               startIcon={<StorageIcon />}
                               href={proj.giteaLink}
@@ -197,6 +249,7 @@ const Experience = () => {
                           )}
                         </Stack>
                       </Box>
+
                     </Box>
                   ))}
                 </Stack>

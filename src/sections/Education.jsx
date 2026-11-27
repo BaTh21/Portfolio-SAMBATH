@@ -11,7 +11,7 @@ const educationData = [
     duration: '2022 – 2026',
     description: 'Focused on software engineering, database management, and full-stack web development.',
     skills: ['Computer Science', 'Software Engineering', 'Database Systems'],
-    icon: <SchoolIcon sx={{ fontSize: 35 }} />
+    icon: <SchoolIcon sx={{ fontSize: { xs: 28, md: 35 } }} />,
   },
   {
     institution: 'Cheasim Samaki High School',
@@ -19,7 +19,7 @@ const educationData = [
     duration: '2015 – 2021',
     description: 'Completed high school education with a focus on science and mathematics.',
     skills: ['High School Diploma', 'BAC II'],
-    icon: <HistoryEduIcon sx={{ fontSize: 35 }} />
+    icon: <HistoryEduIcon sx={{ fontSize: { xs: 28, md: 35 } }} />,
   },
   {
     institution: 'Americanbridge International School',
@@ -27,73 +27,149 @@ const educationData = [
     duration: '2015 – 2020',
     description: 'Developed strong English communication skills, foundational for professional interactions.',
     skills: ['English Proficiency', 'Communication'],
-    icon: <TranslateIcon sx={{ fontSize: 35 }} />
-  }
+    icon: <TranslateIcon sx={{ fontSize: { xs: 28, md: 35 } }} />,
+  },
 ];
 
 const Education = () => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
-  // Icon color: White in light mode, dark text in dark mode (to contrast with bright blue)
   const iconColor = isLight ? 'white' : '#121212';
 
   return (
-    <Box id="education" sx={{ py: 10, backgroundColor: 'transparent' }}>
+    <Box id="education" sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'transparent', overflowX: 'hidden' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <SchoolIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
-          <Typography variant="h3" color="primary" fontWeight="bold" gutterBottom>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+          <SchoolIcon color="primary" sx={{ fontSize: { xs: 40, md: 50 }, mb: 2 }} />
+          <Typography
+            variant="h3"
+            color="primary"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' } }}
+          >
             Educational History
           </Typography>
-          <Typography variant="h6" color="text.secondary">
+          <Typography variant="h6" color="text.secondary" sx={{ fontSize: { xs: '0.95rem', md: '1.25rem' } }}>
             My academic journey and foundational learning.
           </Typography>
         </Box>
 
-        <Stack spacing={4} sx={{ maxWidth: '850px', mx: 'auto' }}>
+        <Stack spacing={{ xs: 3, md: 4 }} sx={{ maxWidth: '850px', mx: 'auto', width: '100%' }}>
           {educationData.map((edu, index) => (
-            <Card key={index} sx={{ boxShadow: 3, borderRadius: 3, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, overflow: 'hidden' }}>
-              
-              {/* Left Icon Sidebar - Now all use the same Primary Color */}
-              <Box sx={{ 
-                backgroundColor: 'primary.main', 
-                color: iconColor,
-                p: 3, 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                minWidth: { sm: '100px' }
-              }}>
+            <Card
+              key={index}
+              sx={{
+                boxShadow: 3,
+                borderRadius: { xs: 2, md: 3 },
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                overflow: 'hidden', // Hides any accidental overflow
+                width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              {/* Icon Banner */}
+              <Box
+                sx={{
+                  backgroundColor: 'primary.main',
+                  color: iconColor,
+                  p: { xs: 1.5, sm: 3 },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: { xs: '100%', sm: '100px' },
+                  minHeight: { xs: 50, sm: 'auto' },
+                }}
+              >
                 {edu.icon}
               </Box>
 
-              {/* Right Content Side */}
-              <CardContent sx={{ p: { xs: 3, md: 4 }, flexGrow: 1 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
-                  <Box>
-                    <Typography variant="h5" fontWeight="bold" color="primary" gutterBottom>
+              {/* Content Area */}
+              <CardContent 
+                sx={{ 
+                  p: { xs: 2, md: 4 }, 
+                  flexGrow: 1, 
+                  width: '100%', 
+                  boxSizing: 'border-box',
+                  minWidth: 0, // Crucial: Allows flex child to shrink below its minimum content width
+                }}
+              >
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    flexDirection: { xs: 'column', sm: 'row' }, 
+                    justifyContent: 'space-between', 
+                    alignItems: { xs: 'flex-start', sm: 'flex-start' }, 
+                    flexWrap: 'wrap', 
+                    gap: 1,
+                    width: '100%',
+                  }}
+                >
+                  <Box sx={{ wordBreak: 'break-word', overflowWrap: 'anywhere', width: '100%' }}>
+                    <Typography 
+                      variant="h5" 
+                      fontWeight="bold" 
+                      color="primary" 
+                      gutterBottom 
+                      sx={{ fontSize: { xs: '1.15rem', md: '1.5rem' }, wordBreak: 'break-word' }}
+                    >
                       {edu.institution}
                     </Typography>
-                    <Typography variant="h6" color="text.primary" fontWeight="500" gutterBottom>
+                    <Typography 
+                      variant="h6" 
+                      color="text.primary" 
+                      fontWeight="500" 
+                      gutterBottom 
+                      sx={{ fontSize: { xs: '0.95rem', md: '1.25rem' }, wordBreak: 'break-word' }}
+                    >
                       {edu.degree}
                     </Typography>
                   </Box>
-                  <Typography variant="subtitle1" color="secondary" fontWeight="bold" sx={{ whiteSpace: 'nowrap' }}>
+                  
+                  <Typography 
+                    variant="subtitle1" 
+                    color="secondary" 
+                    fontWeight="bold" 
+                    sx={{ 
+                      whiteSpace: 'nowrap', 
+                      fontSize: { xs: '0.85rem', md: '1rem' },
+                      mt: { xs: 1, sm: 0.5 }
+                    }}
+                  >
                     {edu.duration}
                   </Typography>
                 </Box>
-                
-                <Divider sx={{ my: 2 }} />
-                
-                <Typography variant="body2" color="text.secondary" paragraph sx={{ lineHeight: 1.7 }}>
+
+                <Divider sx={{ my: 2, width: '100%' }} />
+
+                <Typography 
+                  variant="body2" 
+                  color="text.secondary" 
+                  paragraph 
+                  sx={{ 
+                    lineHeight: 1.7, 
+                    wordBreak: 'break-word',
+                    overflowWrap: 'anywhere',
+                    maxWidth: '100%'
+                  }}
+                >
                   {edu.description}
                 </Typography>
 
-                <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 2 }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2, width: '100%' }}>
                   {edu.skills.map((skill, i) => (
-                    <Chip key={i} label={skill} size="small" color="primary" variant="outlined" sx={{ fontWeight: 'bold' }} />
+                    <Chip 
+                      key={i} 
+                      label={skill} 
+                      size="small" 
+                      color="primary" 
+                      variant="outlined" 
+                      sx={{ fontWeight: 'bold', maxWidth: '100%' }} 
+                    />
                   ))}
-                </Stack>
+                </Box>
               </CardContent>
             </Card>
           ))}

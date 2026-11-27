@@ -34,7 +34,7 @@ const Hero = () => {
                         </Typography>
 
                         <Typography variant="body1" color="text.secondary" paragraph sx={{ mb: 4, fontSize: '1.1rem', maxWidth: '600px', mx: { xs: 'auto', md: 0 }, lineHeight: 1.6 }}>
-                            A recent Computer Science graduate with a strong passion for software development. I specialize in building scalable web applications using React.js, Laravel, and FastAPI.
+                            A recent Computer Science graduate with a strong passion for software development. I specialize in building scalable web applications using React.js, Python, and FastAPI.
                         </Typography>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>

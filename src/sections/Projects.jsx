@@ -6,7 +6,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 const projectsData = [
   {
-    title: 'Khawin Company',
+    title: 'Khawin Co., Ltd.',
     role: 'Full-Stack Developer',
     description: [
       "Neco360: Engineered a comprehensive social and health platform featuring a diary feed, short-form video reels, and real-time messaging (voice/video calls). Implemented secure encrypted medical records and a robust Role-Based Access Control (RBAC) system with an admin dashboard.",

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardContent, CardActions, Button, Chip, Stack, useTheme } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
 import LockIcon from '@mui/icons-material/Lock';
-import StorageIcon from '@mui/icons-material/Storage';
-import LanguageIcon from '@mui/icons-material/Language'; // Added for live links
+import LanguageIcon from '@mui/icons-material/Language'; 
 
 const projectsData = [
   {
@@ -17,10 +15,9 @@ const projectsData = [
       "Mobile App: Developed a mobile application alongside the web platforms, handling both frontend user interfaces (React/MUI) and API integrations."
     ],
     tech: ['React.js', 'MUI', 'FastAPI','PostgreSQL','Python', 'Docker', 'JWT', 'OAuth2', 'WebSockets'],
-    link: 'https://gitea.skl-solutions.com/', 
+    // Removed link and githubLink so the buttons don't render
     isPrivate: true,
-    platform: 'Gitea',
-    githubLink: 'https://github.com/BaTh21',
+    platform: 'Khawin',
     liveLinks: [
       { label: 'Visit Neco360', url: 'https://neco.skl-solutions.com' },
       { label: 'Visit ChatBot', url: 'https://chatbot.skl-solutions.com' }
@@ -56,7 +53,7 @@ const Projects = () => {
                   <Typography variant="h5" fontWeight="bold" color="primary" gutterBottom>
                     {project.title}
                   </Typography>
-                  {/* FIXED: Changed color="secondary.main" to color="secondary" */}
+                  
                   <Typography variant="subtitle1" color="secondary" fontWeight="bold" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                     <WorkIcon fontSize="small" /> {project.role}
                   </Typography>
@@ -87,7 +84,7 @@ const Projects = () => {
                 
                 <CardActions sx={{ p: 3, pt: 0, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                   
-                  {/* ADDED: Live Website Buttons */}
+                  {/* Live Website Buttons (Only for Khawin) */}
                   {project.liveLinks && project.liveLinks.map((live, idx) => (
                     <Button 
                       key={idx}
@@ -104,36 +101,8 @@ const Projects = () => {
                     </Button>
                   ))}
 
-                  {project.platform === 'Gitea' && (
-                    <Button 
-                      size="small" 
-                      color="primary" 
-                      variant="outlined" 
-                      startIcon={<StorageIcon />} 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Gitea (Private)
-                    </Button>
-                  )}
-
-                  {project.githubLink && (
-                    <Button 
-                      size="small" 
-                      color="primary" 
-                      variant="contained" 
-                      startIcon={<GitHubIcon />} 
-                      href={project.githubLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      sx={{ color: buttonTextColor }}
-                    >
-                      GitHub
-                    </Button>
-                  )}
-
-                  {project.isPrivate && project.platform !== 'Gitea' && (
+                  {/* Private Project Button (Only for GoTrade now) */}
+                  {project.isPrivate && project.platform !== 'Khawin' && (
                     <Button 
                       size="small" 
                       color="inherit" 

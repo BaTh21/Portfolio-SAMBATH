@@ -28,7 +28,6 @@ const Navbar = () => {
       <List>
         {navItems.map((item) => (
           <ListItem button key={item.label} component="a" href={item.href}>
-            {/* Text color switches based on Dark/Light mode */}
             <ListItemText 
               primary={item.label} 
               sx={{ textAlign: 'center', color: 'text.primary' }} 
@@ -40,7 +39,14 @@ const Navbar = () => {
   );
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'background.paper', boxShadow: 1 }}>
+    <AppBar 
+      position="fixed" // <--- CHANGED FROM STICKY TO FIXED
+      sx={{ 
+        backgroundColor: 'background.paper', 
+        boxShadow: 1,
+        zIndex: theme.zIndex.drawer + 1 // Ensures it stays above all other content
+      }}
+    >
       <Toolbar sx={{ px: { xs: 1.5, sm: 3 } }}>
         <Typography
           variant="h6"
@@ -80,7 +86,6 @@ const Navbar = () => {
               : <Brightness4Icon sx={{ color: 'primary.main' }} />}
           </IconButton>
           
-          {/* DYNAMIC HAMBURGER COLOR */}
           <IconButton 
             edge="end" 
             onClick={handleDrawerToggle} 
@@ -101,8 +106,8 @@ const Navbar = () => {
         ModalProps={{ keepMounted: true }}
         PaperProps={{
           sx: {
-            backgroundColor: 'background.paper', // Matches card background in both modes
-            color: 'text.primary' // Ensures drawer text is white in dark mode, dark in light mode
+            backgroundColor: 'background.paper',
+            color: 'text.primary'
           }
         }}
       >

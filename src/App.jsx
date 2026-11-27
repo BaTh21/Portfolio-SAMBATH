@@ -23,7 +23,6 @@ const AppContent = () => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
 
-  // --- SCROLL TO TOP LOGIC ---
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -45,7 +44,6 @@ const AppContent = () => {
       behavior: 'smooth'
     });
   };
-  // ---------------------------
 
   return (
     <Box 
@@ -58,14 +56,25 @@ const AppContent = () => {
           : 'linear-gradient(-45deg, #0F172A, #1E1B4B, #0F172A, #111827)', 
         display: 'flex',
         flexDirection: 'column',
-        overflowX: 'hidden', // Prevents horizontal scrolling on all devices
+        overflowX: 'hidden',
         width: '100%',
       }}
     >
       <ParticleBackground />
+      
+      {/* FIXED NAVBAR */}
       <Navbar />
       
-      <Box component="main" sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
+      {/* ADDED RESPONSIVE PADDING TOP SO CONTENT DOESN'T HIDE UNDER NAVBAR */}
+      <Box 
+        component="main" 
+        sx={{ 
+          position: 'relative', 
+          zIndex: 1, 
+          width: '100%',
+          pt: { xs: '56px', sm: '64px' } // Default MUI AppBar heights
+        }}
+      >
         <Hero />
         <Skills />
         <Certifications />
@@ -75,7 +84,7 @@ const AppContent = () => {
         <Contact />
       </Box>
 
-      {/* RESPONSIVE FLOATING SCROLL TO TOP BUTTON */}
+      {/* SCROLL TO TOP BUTTON */}
       <Zoom in={showButton}>
         <Tooltip title="Back to Top" placement="left" arrow>
           <Fab 
@@ -85,13 +94,11 @@ const AppContent = () => {
             onClick={scrollToTop}
             sx={{
               position: 'fixed',
-              // Responsive positioning
               bottom: { xs: 20, sm: 30, md: 40 },
               right: { xs: 20, sm: 30, md: 40 },
               zIndex: 1000,
               color: isLight ? 'white' : '#121212',
               boxShadow: 4,
-              // Responsive button size
               width: { xs: 48, sm: 56, md: 64 },
               height: { xs: 48, sm: 56, md: 64 },
               '&:hover': {

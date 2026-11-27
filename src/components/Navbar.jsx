@@ -15,7 +15,8 @@ const Navbar = () => {
   // UPDATED LINKS
   const navItems = [
     { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' }, // <-- Updated to Experience
+    { label: 'Experience', href: '#experience' },
+    { label: 'Education', href: '#education' }, 
     { label: 'Contact', href: '#contact' },
   ];
 

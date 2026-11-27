@@ -7,7 +7,10 @@ import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
 import Hero from './sections/Hero';
 import Skills from './sections/Skills';
+import Certifications from './sections/Certifications'; // <-- New
 import Experience from './sections/Experience';
+import Education from './sections/Education'; // <-- New
+import SoftSkills from './sections/SoftSkills'; // <-- New
 import Contact from './sections/Contact';
 import './index.css';
 
@@ -25,7 +28,6 @@ const AppContent = () => {
       sx={{ 
         minHeight: '100vh', 
         position: 'relative', 
-        // The gradient is applied to the whole page wrapper
         background: isLight 
           ? 'linear-gradient(-45deg, #E2E8F0, #F4F7F6, #EBF4FF, #E2E8F0)' 
           : 'linear-gradient(-45deg, #0F172A, #1E1B4B, #0F172A, #111827)', 
@@ -33,16 +35,16 @@ const AppContent = () => {
         flexDirection: 'column'
       }}
     >
-      {/* 1. The floating 3D Particle Background */}
       <ParticleBackground />
-
-      {/* 2. The Navbar and Main Content sit ON TOP of the particles */}
       <Navbar />
       
       <Box component="main" sx={{ position: 'relative', zIndex: 1 }}>
         <Hero />
         <Skills />
+        <Certifications />
         <Experience />
+        <Education />
+        <SoftSkills />
         <Contact />
       </Box>
 

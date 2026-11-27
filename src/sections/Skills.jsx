@@ -4,12 +4,14 @@ import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DevicesIcon from '@mui/icons-material/Devices';
+import ComputerIcon from '@mui/icons-material/Computer'; // New Icon for IT Support
 
 const skillsData = [
   { title: 'Frontend', icon: <DevicesIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />, items: 'HTML, CSS, JavaScript, React.js, MUI, Bootstrap' },
   { title: 'Backend', icon: <CodeIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />, items: 'PHP, Laravel, Python, FastAPI' },
   { title: 'Databases', icon: <StorageIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />, items: 'PostgreSQL, MySQL, SQL (CRUD)' },
   { title: 'Tools', icon: <SettingsIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />, items: 'GitHub, Gitea, Microsoft Office' },
+  { title: 'IT Support', icon: <ComputerIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />, items: 'Hardware & Software Troubleshooting, System Setup' },
 ];
 
 const Skills = () => {
@@ -20,9 +22,9 @@ const Skills = () => {
           Technical Skills
         </Typography>
         
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid container spacing={3} sx={{ mt: 2, justifyContent: 'center' }}>
           {skillsData.map((skill, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={12} sm={6} md={2.4} key={index}>
               <Card sx={{ 
                 height: '100%', 
                 textAlign: 'center', 
@@ -35,12 +37,12 @@ const Skills = () => {
                   boxShadow: 6 
                 }
               }}>
-                <CardContent sx={{ p: 4 }}>
+                <CardContent sx={{ p: 3 }}>
                   {skill.icon}
                   <Typography variant="h6" fontWeight="bold" color="text.primary" gutterBottom>
                     {skill.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6, fontSize: '0.85rem' }}>
                     {skill.items}
                   </Typography>
                 </CardContent>

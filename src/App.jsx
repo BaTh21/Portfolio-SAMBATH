@@ -3,7 +3,7 @@ import { AppThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import Skills from './sections/Skills';
-import Projects from './sections/Projects';
+import Experience from './sections/Experience';
 import Contact from './sections/Contact';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <main>
         <Hero />
         <Skills />
-        <Projects />
+        <Experience />
         <Contact />
       </main>
     </AppThemeProvider>

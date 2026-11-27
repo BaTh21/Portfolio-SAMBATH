@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Brightness4Icon from '@mui/icons-material/Brightness4'; // Moon icon
-import Brightness7Icon from '@mui/icons-material/Brightness7'; // Sun icon
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../context/ThemeContext';
 
 const Navbar = () => {
@@ -12,9 +12,10 @@ const Navbar = () => {
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
+  // UPDATED LINKS
   const navItems = [
     { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' }, // <-- Updated to Experience
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -48,7 +49,6 @@ const Navbar = () => {
             </Button>
           ))}
           
-          {/* Theme Toggle Button */}
           <IconButton sx={{ ml: 2 }} onClick={colorMode.toggleColorMode} color="inherit">
             {theme.palette.mode === 'dark' ? <Brightness7Icon sx={{ color: 'white' }} /> : <Brightness4Icon sx={{ color: 'primary.main' }} />}
           </IconButton>
@@ -65,7 +65,6 @@ const Navbar = () => {
         </Box>
       </Toolbar>
 
-      {/* Mobile Drawer */}
       <Drawer variant="temporary" open={mobileOpen} onClose={handleDrawerToggle} ModalProps={{ keepMounted: true }}>
         {drawer}
       </Drawer>

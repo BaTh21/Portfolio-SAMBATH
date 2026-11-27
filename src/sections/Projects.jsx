@@ -4,6 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
 import LockIcon from '@mui/icons-material/Lock';
 import StorageIcon from '@mui/icons-material/Storage';
+import LanguageIcon from '@mui/icons-material/Language'; // Added for live links
 
 const projectsData = [
   {
@@ -19,7 +20,11 @@ const projectsData = [
     link: 'https://gitea.skl-solutions.com/', 
     isPrivate: true,
     platform: 'Gitea',
-    githubLink: 'https://github.com/BaTh21'
+    githubLink: 'https://github.com/BaTh21',
+    liveLinks: [
+      { label: 'Visit Neco360', url: 'https://neco.skl-solutions.com' },
+      { label: 'Visit ChatBot', url: 'https://chatbot.skl-solutions.com' }
+    ]
   },
   {
     title: 'GoTrade Website',
@@ -34,6 +39,7 @@ const projectsData = [
 
 const Projects = () => {
   const theme = useTheme();
+  const buttonTextColor = theme.palette.mode === 'light' ? 'white' : '#121212';
 
   return (
     <Box id="projects" sx={{ py: 10, backgroundColor: 'background.default' }}>
@@ -50,7 +56,8 @@ const Projects = () => {
                   <Typography variant="h5" fontWeight="bold" color="primary" gutterBottom>
                     {project.title}
                   </Typography>
-                  <Typography variant="subtitle1" color="secondary.main" fontWeight="bold" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                  {/* FIXED: Changed color="secondary.main" to color="secondary" */}
+                  <Typography variant="subtitle1" color="secondary" fontWeight="bold" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                     <WorkIcon fontSize="small" /> {project.role}
                   </Typography>
 
@@ -79,6 +86,24 @@ const Projects = () => {
                 </CardContent>
                 
                 <CardActions sx={{ p: 3, pt: 0, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                  
+                  {/* ADDED: Live Website Buttons */}
+                  {project.liveLinks && project.liveLinks.map((live, idx) => (
+                    <Button 
+                      key={idx}
+                      size="small" 
+                      color="success" 
+                      variant="contained" 
+                      startIcon={<LanguageIcon />} 
+                      href={live.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{ color: 'white', fontWeight: 'bold' }}
+                    >
+                      {live.label}
+                    </Button>
+                  ))}
+
                   {project.platform === 'Gitea' && (
                     <Button 
                       size="small" 
@@ -102,7 +127,7 @@ const Projects = () => {
                       href={project.githubLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      sx={{ color: theme.palette.mode === 'light' ? 'white' : '#121212' }}
+                      sx={{ color: buttonTextColor }}
                     >
                       GitHub
                     </Button>
